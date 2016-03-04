@@ -31,4 +31,11 @@ public class DisplayProductFromBarcodeUsecaseTest {
         assertThat(presenterSpy.spiedText, equalTo("ERROR: Invalid Barcode."));
     }
 
+    @Test
+    public void errorWhenProductForBarcodeDoesNotExists() {
+        usecase.process("123456");
+
+        assertThat(presenterSpy.spiedText, equalTo("ERROR: Product do not exists."));
+    }
+
 }

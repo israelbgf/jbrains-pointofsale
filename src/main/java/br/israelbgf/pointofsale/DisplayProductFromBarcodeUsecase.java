@@ -10,8 +10,22 @@ public class DisplayProductFromBarcodeUsecase {
     public void process(String barcode) {
         if(barcode.isEmpty())
             presenter.show("ERROR: Empty Barcode.");
-        else
-            presenter.show("ERROR: Invalid Barcode.");
+        else{
+            if(barcodeIsANumber(barcode)){
+                presenter.show("ERROR: Product do not exists.");
+            }else{
+                presenter.show("ERROR: Invalid Barcode.");
+            }
+        }
+    }
+
+    private boolean barcodeIsANumber(String barcode) {
+        try {
+            Long.parseLong(barcode);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 
     public interface Presenter {
