@@ -10,7 +10,7 @@ public class DisplayProductFromBarcodeUsecase {
     }
 
     public void process(String barcode) {
-        barcode = sanitize(barcode);
+        barcode = sanitized(barcode);
         if (barcode.isEmpty())
             presenter.show("ERROR: Empty Barcode.");
         else if (barcodeIsNotANumber(barcode)) {
@@ -25,7 +25,7 @@ public class DisplayProductFromBarcodeUsecase {
         }
     }
 
-    private String sanitize(String barcode) {
+    private String sanitized(String barcode) {
         return barcode.trim();
     }
 
