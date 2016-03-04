@@ -8,7 +8,7 @@ import static org.junit.Assert.assertThat;
 public class DisplayProductFromBarcodeUsecaseTest {
 
     @Test
-    public void validateEmptyBarcode(){
+    public void validationOfEmptyBarcode(){
         DisplayProductFromBarcodePresenterSpy presenterSpy = new DisplayProductFromBarcodePresenterSpy();
         DisplayProductFromBarcodeUsecase usecase = new DisplayProductFromBarcodeUsecase(presenterSpy);
 
