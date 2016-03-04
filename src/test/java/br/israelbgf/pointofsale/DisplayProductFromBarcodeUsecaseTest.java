@@ -18,14 +18,14 @@ public class DisplayProductFromBarcodeUsecaseTest {
     }
 
     @Test
-    public void validationOfEmptyBarcode() {
+    public void errorWhenEmptyBarcode() {
         usecase.process("");
 
         assertThat(presenterSpy.spiedText, equalTo("ERROR: Empty Barcode."));
     }
 
     @Test
-    public void validationOfNotANumberBarcode() {
+    public void errorWhenBarcodeMixedWithLettersAndNumbers() {
         usecase.process("12JBC2");
 
         assertThat(presenterSpy.spiedText, equalTo("ERROR: Invalid Barcode."));
