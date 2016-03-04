@@ -1,4 +1,6 @@
-package br.israelbgf.pointofsale;
+package br.israelbgf.pointofsale.gateway;
+
+import br.israelbgf.pointofsale.entity.Product;
 
 import java.util.HashMap;
 import java.util.Map;

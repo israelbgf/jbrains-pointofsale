@@ -1,4 +1,4 @@
-package br.israelbgf.pointofsale;
+package br.israelbgf.pointofsale.entity;
 
 public class Product {
     public final String barcode;

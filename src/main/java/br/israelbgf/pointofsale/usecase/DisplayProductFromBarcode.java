@@ -1,10 +1,14 @@
-package br.israelbgf.pointofsale;
+package br.israelbgf.pointofsale.usecase;
 
-public class DisplayProductFromBarcodeUsecase {
+import br.israelbgf.pointofsale.entity.Product;
+import br.israelbgf.pointofsale.gateway.ProductNotFoundException;
+import br.israelbgf.pointofsale.gateway.ProductRepository;
+
+public class DisplayProductFromBarcode {
     private Presenter presenter;
     private ProductRepository repository;
 
-    public DisplayProductFromBarcodeUsecase(Presenter presenter, ProductRepository repository) {
+    public DisplayProductFromBarcode(Presenter presenter, ProductRepository repository) {
         this.presenter = presenter;
         this.repository = repository;
     }

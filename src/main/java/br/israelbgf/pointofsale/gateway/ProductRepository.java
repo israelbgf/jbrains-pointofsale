@@ -1,4 +1,6 @@
-package br.israelbgf.pointofsale;
+package br.israelbgf.pointofsale.gateway;
+
+import br.israelbgf.pointofsale.entity.Product;
 
 public interface ProductRepository {
     void save(Product product);

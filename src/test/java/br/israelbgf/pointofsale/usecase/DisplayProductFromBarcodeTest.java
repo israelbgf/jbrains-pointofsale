@@ -1,22 +1,26 @@
-package br.israelbgf.pointofsale;
+package br.israelbgf.pointofsale.usecase;
 
+import br.israelbgf.pointofsale.doubles.DisplayProductFromBarcodePresenterSpy;
+import br.israelbgf.pointofsale.entity.Product;
+import br.israelbgf.pointofsale.gateway.InMemoryProductRepository;
+import br.israelbgf.pointofsale.gateway.ProductRepository;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
 
-public class DisplayProductFromBarcodeUsecaseTest {
+public class DisplayProductFromBarcodeTest {
 
     private DisplayProductFromBarcodePresenterSpy presenterSpy;
-    private DisplayProductFromBarcodeUsecase usecase;
+    private DisplayProductFromBarcode usecase;
     private ProductRepository repository;
 
     @Before
     public void setUp() {
         presenterSpy = new DisplayProductFromBarcodePresenterSpy();
         repository = new InMemoryProductRepository();
-        usecase = new DisplayProductFromBarcodeUsecase(presenterSpy, repository);
+        usecase = new DisplayProductFromBarcode(presenterSpy, repository);
     }
 
     @Test
