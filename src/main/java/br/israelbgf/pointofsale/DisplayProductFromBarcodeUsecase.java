@@ -10,11 +10,11 @@ public class DisplayProductFromBarcodeUsecase {
     }
 
     public void process(String barcode) {
-        if(barcode.isEmpty())
+        if (barcode.isEmpty())
             presenter.show("ERROR: Empty Barcode.");
-        else if(barcodeIsNotANumber(barcode)){
+        else if (barcodeIsNotANumber(barcode)) {
             presenter.show("ERROR: Invalid Barcode.");
-        } else{
+        } else {
             try {
                 Product product = repository.findBy(barcode);
                 presenter.show("$" + product.price);
@@ -22,7 +22,6 @@ public class DisplayProductFromBarcodeUsecase {
                 presenter.show("ERROR: Product does not exists.");
             }
         }
-
     }
 
     private boolean barcodeIsNotANumber(String barcode) {
@@ -30,7 +29,6 @@ public class DisplayProductFromBarcodeUsecase {
     }
 
     public interface Presenter {
-
         void show(String message);
     }
 }

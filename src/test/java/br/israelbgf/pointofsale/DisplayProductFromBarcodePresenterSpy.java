@@ -1,6 +1,6 @@
 package br.israelbgf.pointofsale;
 
-public class DisplayProductFromBarcodePresenterSpy implements DisplayProductFromBarcodeUsecase.Presenter{
+public class DisplayProductFromBarcodePresenterSpy implements DisplayProductFromBarcodeUsecase.Presenter {
 
     public String spiedText;
 

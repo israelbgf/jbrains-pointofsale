@@ -14,7 +14,7 @@ public class InMemoryProductRepository implements ProductRepository {
 
     @Override
     public Product findBy(String barcode) {
-        if(products.containsKey(barcode))
+        if (products.containsKey(barcode))
             return products.get(barcode);
         else
             throw new ProductNotFoundException();
