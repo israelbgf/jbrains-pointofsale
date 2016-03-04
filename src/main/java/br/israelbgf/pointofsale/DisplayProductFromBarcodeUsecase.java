@@ -8,7 +8,10 @@ public class DisplayProductFromBarcodeUsecase {
     }
 
     public void process(String barcode) {
-        presenter.show("ERROR: Empty Barcode.");
+        if(barcode.isEmpty())
+            presenter.show("ERROR: Empty Barcode.");
+        else
+            presenter.show("ERROR: Invalid Barcode.");
     }
 
     public interface Presenter {

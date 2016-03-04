@@ -17,4 +17,14 @@ public class DisplayProductFromBarcodeUsecaseTest {
         assertThat(presenterSpy.spiedText, equalTo("ERROR: Empty Barcode."));
     }
 
+    @Test
+    public void validationOfNotANumberBarcode(){
+        DisplayProductFromBarcodePresenterSpy presenterSpy = new DisplayProductFromBarcodePresenterSpy();
+        DisplayProductFromBarcodeUsecase usecase = new DisplayProductFromBarcodeUsecase(presenterSpy);
+
+        usecase.process("12JBC2");
+
+        assertThat(presenterSpy.spiedText, equalTo("ERROR: Invalid Barcode."));
+    }
+
 }
