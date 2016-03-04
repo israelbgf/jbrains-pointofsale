@@ -49,4 +49,14 @@ public class DisplayProductFromBarcodeUsecaseTest {
         assertThat(presenterSpy.spiedText, equalTo("$10.59"));
     }
 
+    @Test
+    public void showPriceForTheRightProductWhenOthersExist() {
+        repository.save(new Product("123456", 10.59));
+        repository.save(new Product("654321", 95.01));
+
+        usecase.process("654321");
+
+        assertThat(presenterSpy.spiedText, equalTo("$95.01"));
+    }
+
 }
