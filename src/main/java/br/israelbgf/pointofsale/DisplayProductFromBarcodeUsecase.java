@@ -12,7 +12,7 @@ public class DisplayProductFromBarcodeUsecase {
             presenter.show("ERROR: Empty Barcode.");
         else{
             if(barcodeIsANumber(barcode)){
-                presenter.show("ERROR: Product do not exists.");
+                presenter.show("ERROR: Product does not exists.");
             }else{
                 presenter.show("ERROR: Invalid Barcode.");
             }
