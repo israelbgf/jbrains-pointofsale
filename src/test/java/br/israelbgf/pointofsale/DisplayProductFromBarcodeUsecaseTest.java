@@ -59,4 +59,14 @@ public class DisplayProductFromBarcodeUsecaseTest {
         assertThat(presenterSpy.spiedText, equalTo("$95.01"));
     }
 
+    @Test
+    public void showPriceWhenBarcodeForProductExistsButItIsMessedUp() {
+        repository.save(new Product("123456", 10.59));
+
+        usecase.process("  123456\n\r");
+
+        assertThat(presenterSpy.spiedText, equalTo("$10.59"));
+    }
+
+
 }
