@@ -2,9 +2,11 @@ package br.israelbgf.pointofsale;
 
 public class DisplayProductFromBarcodeUsecase {
     private Presenter presenter;
+    private ProductRepository repository;
 
-    public DisplayProductFromBarcodeUsecase(Presenter presenter) {
+    public DisplayProductFromBarcodeUsecase(Presenter presenter, ProductRepository repository) {
         this.presenter = presenter;
+        this.repository = repository;
     }
 
     public void process(String barcode) {
@@ -12,9 +14,15 @@ public class DisplayProductFromBarcodeUsecase {
             presenter.show("ERROR: Empty Barcode.");
         else if(barcodeIsNotANumber(barcode)){
             presenter.show("ERROR: Invalid Barcode.");
-        }else{
-            presenter.show("ERROR: Product does not exists.");
+        } else{
+            try {
+                Product product = repository.findBy(barcode);
+                presenter.show("$" + product.price);
+            } catch (ProductNotFoundException e) {
+                presenter.show("ERROR: Product does not exists.");
+            }
         }
+
     }
 
     private boolean barcodeIsNotANumber(String barcode) {

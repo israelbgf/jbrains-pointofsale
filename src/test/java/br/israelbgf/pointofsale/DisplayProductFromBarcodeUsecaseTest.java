@@ -10,11 +10,13 @@ public class DisplayProductFromBarcodeUsecaseTest {
 
     private DisplayProductFromBarcodePresenterSpy presenterSpy;
     private DisplayProductFromBarcodeUsecase usecase;
+    private ProductRepository repository;
 
     @Before
     public void setUp() {
         presenterSpy = new DisplayProductFromBarcodePresenterSpy();
-        usecase = new DisplayProductFromBarcodeUsecase(presenterSpy);
+        repository = new InMemoryProductRepository();
+        usecase = new DisplayProductFromBarcodeUsecase(presenterSpy, repository);
     }
 
     @Test
@@ -36,6 +38,15 @@ public class DisplayProductFromBarcodeUsecaseTest {
         usecase.process("123456");
 
         assertThat(presenterSpy.spiedText, equalTo("ERROR: Product does not exists."));
+    }
+
+    @Test
+    public void showPriceWhenProductExists() {
+        repository.save(new Product("123456", 10.59));
+
+        usecase.process("123456");
+
+        assertThat(presenterSpy.spiedText, equalTo("$10.59"));
     }
 
 }
